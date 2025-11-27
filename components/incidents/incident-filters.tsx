@@ -34,6 +34,11 @@ export function IncidentFiltersComponent({ filters, onFiltersChange }: IncidentF
   const [departments, setDepartments] = useState<Department[]>([]);
   const [searchValue, setSearchValue] = useState(filters.search || '');
 
+  // Sync searchValue when filters.search changes (e.g., from URL)
+  useEffect(() => {
+    setSearchValue(filters.search || '');
+  }, [filters.search]);
+
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
