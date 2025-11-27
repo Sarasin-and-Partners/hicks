@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: project-hicks
+    runtime: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_PATH
+        value: /app/data/conduct-log.db

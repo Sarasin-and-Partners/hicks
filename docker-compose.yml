@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    container_name: conduct-log
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      # Persist SQLite database
+      - conduct_log_data:/app/data
+    environment:
+      - NODE_ENV=production
+      - DATABASE_PATH=/app/data/conduct-log.db
+
+volumes:
+  conduct_log_data:
