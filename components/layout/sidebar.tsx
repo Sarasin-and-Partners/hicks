@@ -51,7 +51,7 @@ export function Sidebar() {
         {!collapsed && (
           <Link href="/" className="flex items-center gap-2">
             <AlertTriangle className="h-6 w-6 text-primary" />
-            <span className="font-semibold">Conduct Log</span>
+            <span className="font-semibold">Conduct Register</span>
           </Link>
         )}
         {collapsed && (
