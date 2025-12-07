@@ -35,7 +35,6 @@ interface CommentFormProps {
 }
 
 export function CommentForm({
-  incidentId,
   parentId,
   onSubmit,
   onCancel,

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Check, ChevronsUpDown, User as UserIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -40,10 +40,6 @@ export function UserSelector({
   const [users, setUsers] = useState<User[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState('');
-  const [hasFetched, setHasFetched] = useState(false);
-
-  // Memoize excludeIds to prevent unnecessary re-renders
-  const excludeIdsKey = useMemo(() => (excludeIds || []).join(','), [excludeIds]);
 
   useEffect(() => {
     // Only fetch once on mount and when search changes
@@ -64,14 +60,13 @@ export function UserSelector({
         console.error('Failed to fetch users:', error);
       } finally {
         setIsLoading(false);
-        setHasFetched(true);
       }
     };
 
     // Debounce the search
     const debounceTimer = setTimeout(fetchUsers, search ? 300 : 0);
     return () => clearTimeout(debounceTimer);
-  }, [search, excludeIdsKey]);
+  }, [search, excludeIds]);
 
   const selectedUser = users.find(u => u.id === value);
 

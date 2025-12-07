@@ -12,7 +12,7 @@ import {
   statusHistory,
   auditLog,
 } from '@/lib/db/schema';
-import { eq, and, or, gte, lte, ilike, desc, asc, sql, count } from 'drizzle-orm';
+import { eq, and, or, gte, lte, ilike, desc, asc, count } from 'drizzle-orm';
 import { createIncidentSchema, incidentListQuerySchema } from '@/lib/validations/incident';
 import { v4 as uuidv4 } from 'uuid';
 

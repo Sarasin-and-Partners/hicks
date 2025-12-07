@@ -116,7 +116,7 @@ export default function IncidentTypesPage() {
           description: data.error,
         });
       }
-    } catch (error) {
+    } catch {
       toast.error('Failed to save incident type');
     } finally {
       setIsSubmitting(false);

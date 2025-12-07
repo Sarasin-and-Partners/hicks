@@ -64,6 +64,7 @@ export function StatusChangeForm({
     onOpenChange(false);
   };
 
+  // eslint-disable-next-line react-hooks/incompatible-library
   const selectedStatus = form.watch('status');
   const requiresReason = selectedStatus === 'closed' || currentStatus === 'closed';
 

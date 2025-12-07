@@ -1,7 +1,6 @@
 'use client';
 
 import { use, useCallback, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { toast } from 'sonner';
 import { IncidentDetail } from '@/components/incidents/incident-detail';
@@ -13,7 +12,6 @@ import { ArrowLeft } from 'lucide-react';
 
 export default function IncidentDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const router = useRouter();
   const { user } = useUser();
   const { incident, isLoading, error, refresh } = useIncident(id);
   const [isUpdating, setIsUpdating] = useState(false);
@@ -41,7 +39,7 @@ export default function IncidentDetailPage({ params }: { params: Promise<{ id: s
           description: data.error,
         });
       }
-    } catch (err) {
+    } catch {
       toast.error('Failed to update status');
     } finally {
       setIsUpdating(false);
@@ -70,7 +68,7 @@ export default function IncidentDetailPage({ params }: { params: Promise<{ id: s
           description: data.error,
         });
       }
-    } catch (err) {
+    } catch {
       toast.error('Failed to add comment');
     }
   }, [id, user, refresh]);
