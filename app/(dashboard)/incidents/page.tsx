@@ -64,6 +64,7 @@ export default function IncidentsPage() {
       </div>
 
       <IncidentFiltersComponent
+        key={filters.search}
         filters={filters}
         onFiltersChange={handleFiltersChange}
       />
